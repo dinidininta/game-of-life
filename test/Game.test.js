@@ -25,5 +25,37 @@ describe('Game', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('should return new generation when the input is previous generation', () => {
+      const expectedResult = [
+        new Cell(1, 1, Cell.ALIVE),
+        new Cell(1, 2, Cell.ALIVE),
+        new Cell(2, 1, Cell.ALIVE),
+        new Cell(2, 2, Cell.ALIVE)
+      ];
+      const game = new Game([[1, 1], [1, 2], [2, 1], [2, 2]]);
+
+      const actualResult = game.play();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the cell grid when the input is string', () => {
+      const expectedResult = [
+        new Cell(1, 1, Cell.ALIVE),
+        new Cell(1, 2, Cell.ALIVE),
+        new Cell(2, 1, Cell.ALIVE),
+        new Cell(2, 2, Cell.ALIVE)
+      ];
+
+      const game = new Game('1, 1' +
+        '\n1, 2' +
+        '\n2, 1' +
+        '\n2, 2');
+
+      const actualResult = game.generateFromString();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });
