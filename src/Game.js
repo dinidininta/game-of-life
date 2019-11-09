@@ -1,13 +1,14 @@
 import Cell from './Cell';
 
 class Game {
-  constructor(x, y) {
-    this._x = x;
-    this._y = y;
+  constructor(input) {
+    this._input = input;
   }
 
   generateCells() {
-    return new Cell(this._x, this._y, Cell.ALIVE);
+    const cells = [];
+    this._input.forEach(element => cells.push(new Cell(element[0], element[1], Cell.ALIVE)));
+    return cells;
   }
 }
 
