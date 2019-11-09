@@ -7,7 +7,7 @@ class Cell {
 
   status(neighbours) {
     const aliveNeighbours = neighbours.filter(neighbour => neighbour._initialStatus === Cell.ALIVE);
-    if (aliveNeighbours.length < 2) {
+    if (this._initialStatus || aliveNeighbours.length < 2) {
       return Cell.DEAD;
     }
     return Cell.ALIVE;
