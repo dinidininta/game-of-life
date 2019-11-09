@@ -21,5 +21,10 @@ describe('Grid', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('should return 8 neighbours grid with corresponding status when there are some predefined cells status', () => {
+
+
+    });
   });
 });
