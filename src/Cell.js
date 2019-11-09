@@ -5,11 +5,12 @@ class Cell {
     this._initialStatus = initialStatus;
   }
 
-  status() {
-    if (this._initialStatus === Cell.ALIVE) {
-      return Cell.ALIVE;
+  status(neighbours) {
+    const aliveNeighbours = neighbours.filter(neighbour => neighbour._initialStatus === Cell.ALIVE);
+    if (aliveNeighbours.length < 2) {
+      return Cell.DEAD;
     }
-    return Cell.DEAD;
+    return Cell.ALIVE;
   }
 }
 
