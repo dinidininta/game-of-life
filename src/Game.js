@@ -56,7 +56,6 @@ class Game {
 
   play(neighbours) {
     const aliveNeighbours = neighbours.filter(element => element._initialStatus === Cell.ALIVE);
-    console.log(aliveNeighbours.length);
     if (aliveNeighbours.length < 2 || aliveNeighbours.length > 3) {
       return Cell.DEAD;
     }
@@ -64,7 +63,14 @@ class Game {
   }
 
   playAllCells() {
-    return [Cell.ALIVE, Cell.ALIVE, Cell.ALIVE, Cell.ALIVE];
+    const cellNextStatus = [];
+    let index = 0;
+    while (index < this._cells.length) {
+      const cellNeighbours = this.generateNeighbours(index);
+      cellNextStatus.push(this.play(cellNeighbours));
+      index += 1;
+    }
+    return cellNextStatus;
   }
 }
 

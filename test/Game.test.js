@@ -185,5 +185,17 @@ describe('Game', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('should return the next generation status for each inputted cell in blinker pattern', () => {
+      const expectedResult = [Cell.ALIVE, Cell.DEAD, Cell.DEAD];
+      const game = new Game('1, 1' +
+        '\n1, 0' +
+        '\n1, 2');
+
+      game.generateFromString();
+      const actualResult = game.playAllCells();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });
