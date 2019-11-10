@@ -12,7 +12,6 @@ class Game {
   }
 
   generateFromString() {
-    console.log(this._input);
     const splitInput = this._input.split('\n');
     splitInput.forEach(element => this._cells.push(new Cell(
       parseInt(element[0], 10),
@@ -21,6 +20,38 @@ class Game {
     )));
 
     return this._cells;
+  }
+
+  generateNeighbours() {
+    const firstCell = this._cells[0];
+    const neighbours = [];
+
+    for (let i = firstCell._x - 1; i < firstCell._x + 2; i += 1) {
+      for (let j = firstCell._y - 1; j < firstCell._y + 2; j += 1) {
+        if (!(i === firstCell._x && j === firstCell._y)) {
+          if (this._existed(this._cells, new Cell(i, j, Cell.ALIVE))) {
+            neighbours.push(new Cell(i, j, Cell.ALIVE));
+          } else {
+            neighbours.push(new Cell(i, j, Cell.DEAD));
+          }
+        }
+      }
+    }
+    return neighbours;
+  }
+
+  _equals(cell, otherCell) {
+    return cell._x === otherCell._x && cell._y === otherCell._y &&
+      cell._initialStatus === otherCell._initialStatus;
+  }
+
+  _existed(neighbours, cell) {
+    for (const neighbour of neighbours) {
+      if (this._equals(neighbour, cell)) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
