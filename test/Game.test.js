@@ -171,4 +171,19 @@ describe('Game', () => {
       expect(actualResult).toEqual(expectedResult);
     });
   });
+
+  describe('#playAllCell', () => {
+    it('should return the next generation status for each inputted cell in block pattern', () => {
+      const expectedResult = [Cell.ALIVE, Cell.ALIVE, Cell.ALIVE, Cell.ALIVE];
+      const game = new Game('1, 1' +
+        '\n1, 2' +
+        '\n2, 1' +
+        '\n2, 2');
+
+      game.generateFromString();
+      const actualResult = game.playAllCells();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+  });
 });

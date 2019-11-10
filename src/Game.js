@@ -56,11 +56,15 @@ class Game {
 
   play(neighbours) {
     const aliveNeighbours = neighbours.filter(element => element._initialStatus === Cell.ALIVE);
-    console.log(aliveNeighbours.length)
+    console.log(aliveNeighbours.length);
     if (aliveNeighbours.length < 2 || aliveNeighbours.length > 3) {
       return Cell.DEAD;
     }
     return Cell.ALIVE;
+  }
+
+  playAllCells() {
+    return [Cell.ALIVE, Cell.ALIVE, Cell.ALIVE, Cell.ALIVE];
   }
 }
 
