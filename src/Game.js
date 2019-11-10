@@ -53,6 +53,14 @@ class Game {
     }
     return false;
   }
+
+  play(neighbours) {
+    const aliveNeighbours = neighbours.filter(element => element._initialStatus === Cell.ALIVE);
+    if (aliveNeighbours.length < 2 || aliveNeighbours > 3) {
+      return Cell.DEAD;
+    }
+    return Cell.ALIVE;
+  }
 }
 
 export default Game;
