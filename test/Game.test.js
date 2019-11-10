@@ -111,7 +111,35 @@ describe('Game', () => {
       expect(actualResult).toEqual(expectedResult);
     });
 
+    it('should return the Cell.ALIVE status for the first cell when the input is blinker pattern', () => {
+      const expectedResult = Cell.ALIVE;
+      const game = new Game('1, 1' +
+        '\n1, 0' +
+        '\n1, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(0);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
     it('should return the Cell.DEAD status for the second cell when the input is blinker pattern', () => {
+      const expectedResult = Cell.DEAD;
+      const game = new Game('1, 1' +
+        '\n1, 0' +
+        '\n1, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(1);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the Cell.DEAD status for the third cell when the input is blinker pattern', () => {
       const expectedResult = Cell.DEAD;
       const game = new Game('1, 1' +
         '\n1, 0' +
