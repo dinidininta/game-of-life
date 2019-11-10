@@ -2,7 +2,7 @@ import Game from '../src/Game';
 import Cell from '../src/Cell';
 
 describe('Game', () => {
-  describe('#inputPattern', () => {
+  describe('#generateCells', () => {
     it('should return cell objects when the input are coordinates', () => {
       const expectedResult = [new Cell(1, 1, Cell.ALIVE)];
       const game = new Game([[1, 1]]);
@@ -22,20 +22,6 @@ describe('Game', () => {
       const game = new Game([[1, 1], [1, 2], [2, 1], [2, 2]]);
 
       const actualResult = game.generateCells();
-
-      expect(actualResult).toEqual(expectedResult);
-    });
-
-    it('should return new generation when the input is previous generation', () => {
-      const expectedResult = [
-        new Cell(1, 1, Cell.ALIVE),
-        new Cell(1, 2, Cell.ALIVE),
-        new Cell(2, 1, Cell.ALIVE),
-        new Cell(2, 2, Cell.ALIVE)
-      ];
-      const game = new Game([[1, 1], [1, 2], [2, 1], [2, 2]]);
-
-      const actualResult = game.play();
 
       expect(actualResult).toEqual(expectedResult);
     });
@@ -76,12 +62,14 @@ describe('Game', () => {
         '\n2, 2');
 
       game.generateFromString();
-      const actualResult = game.generateNeighbours();
+      const actualResult = game.generateNeighbours(0);
 
       expect(actualResult).toEqual(expectedResult);
     });
+  });
 
-    it('should return the Cell.ALIVE status for the first cell when the input is {1, 1} {1, 2} {2, 1} {2, 2}', () => {
+  describe('#play', () => {
+    it('should return the Cell.ALIVE status for the first cell when the input is block patterb', () => {
       const expectedResult = Cell.ALIVE;
       const game = new Game('1, 1' +
         '\n1, 2' +
@@ -89,14 +77,29 @@ describe('Game', () => {
         '\n2, 2');
 
       game.generateFromString();
-      const neighbours = game.generateNeighbours();
+      const neighbours = game.generateNeighbours(0);
 
       const actualResult = game.play(neighbours);
 
       expect(actualResult).toEqual(expectedResult);
     });
 
-    it('should return the Cell.ALIVE status for the second cell when the input is {1, 1} {1, 2} {2, 1} {2, 2}', () => {
+    it('should return the Cell.ALIVE status for the second cell when the input is block pattern', () => {
+      const expectedResult = Cell.ALIVE;
+      const game = new Game('1, 1' +
+        '\n1, 2' +
+        '\n2, 1' +
+        '\n2, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(1);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the Cell.ALIVE status for the third cell when the input is block pattern', () => {
       const expectedResult = Cell.ALIVE;
       const game = new Game('1, 1' +
         '\n1, 2' +
@@ -105,6 +108,21 @@ describe('Game', () => {
 
       game.generateFromString();
       const neighbours = game.generateNeighbours(2);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the Cell.ALIVE status for the fourth cell when the input is block pattern', () => {
+      const expectedResult = Cell.ALIVE;
+      const game = new Game('1, 1' +
+        '\n1, 2' +
+        '\n2, 1' +
+        '\n2, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(3);
 
       const actualResult = game.play(neighbours);
 
