@@ -95,5 +95,34 @@ describe('Game', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('should return the Cell.ALIVE status for the second cell when the input is {1, 1} {1, 2} {2, 1} {2, 2}', () => {
+      const expectedResult = Cell.ALIVE;
+      const game = new Game('1, 1' +
+        '\n1, 2' +
+        '\n2, 1' +
+        '\n2, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(2);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+
+    it('should return the Cell.DEAD status for the second cell when the input is blinker pattern', () => {
+      const expectedResult = Cell.DEAD;
+      const game = new Game('1, 1' +
+        '\n1, 0' +
+        '\n1, 2');
+
+      game.generateFromString();
+      const neighbours = game.generateNeighbours(2);
+
+      const actualResult = game.play(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });

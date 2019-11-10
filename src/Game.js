@@ -22,8 +22,8 @@ class Game {
     return this._cells;
   }
 
-  generateNeighbours() {
-    const firstCell = this._cells[0];
+  generateNeighbours(index) {
+    const firstCell = this._cells[index];
     const neighbours = [];
 
     for (let i = firstCell._x - 1; i < firstCell._x + 2; i += 1) {
