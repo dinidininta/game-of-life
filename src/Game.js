@@ -40,12 +40,14 @@ class Game {
     return neighbours;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   _equals(cell, otherCell) {
     return cell._x === otherCell._x && cell._y === otherCell._y &&
       cell._initialStatus === otherCell._initialStatus;
   }
 
   _existed(neighbours, cell) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const neighbour of neighbours) {
       if (this._equals(neighbour, cell)) {
         return true;
@@ -54,6 +56,7 @@ class Game {
     return false;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   play(neighbours) {
     const aliveNeighbours = neighbours.filter(element => element._initialStatus === Cell.ALIVE);
     if (aliveNeighbours.length < 2 || aliveNeighbours.length > 3) {
