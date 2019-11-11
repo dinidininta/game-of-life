@@ -5,10 +5,10 @@ describe('Cell', () => {
   describe('#status', () => {
     it('should return Cell.DEAD when there are no neighbours and initial status is Cell.ALIVE', () => {
       const expectedResult = Cell.DEAD;
-      const cell = new Cell(1, 1, Cell.ALIVE);
-      const neighbours = new Neighbour(cell);
+      const cell = [new Cell(1, 1, Cell.ALIVE)];
+      const neighbours = new Neighbour(cell, 0);
 
-      const actualResult = cell.status(neighbours.generate());
+      const actualResult = cell[0].status(neighbours.generate());
 
       expect(actualResult).toEqual(expectedResult);
     });

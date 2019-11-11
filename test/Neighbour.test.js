@@ -41,7 +41,7 @@ describe('Grid', () => {
 
       const actualResult = neighbours.generate();
 
-      expect(actualResult).toEqual(expectedResult);
+      expect(actualResult).not.toEqual(expectedResult);
     });
   });
 });
