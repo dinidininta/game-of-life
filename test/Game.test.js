@@ -197,5 +197,17 @@ describe('Game', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+
+    it('should return ["1, 1", "0, 1", "2, 1"] when the input is blinker pattern', () => {
+      const expectedResult = ['1, 1', '0, 1', '2, 1'];
+      const game = new Game('1, 1' +
+        '\n1, 0' +
+        '\n1, 2');
+
+      game.generateFromString();
+      const actualResult = game.playGame();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });

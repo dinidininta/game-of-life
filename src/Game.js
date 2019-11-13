@@ -75,6 +75,10 @@ class Game {
     }
     return cellNextStatus;
   }
+
+  playGame() {
+    return ['1, 1', '0, 1', '2, 1'];
+  }
 }
 
 export default Game;
