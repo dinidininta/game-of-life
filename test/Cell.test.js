@@ -1,35 +1,23 @@
 import Cell from '../src/Cell';
-import Neighbour from '../src/Neighbour';
 
 describe('Cell', () => {
   describe('#status', () => {
-    it('should return Cell.DEAD when there are no neighbours and initial status is Cell.ALIVE', () => {
-      const expectedResult = Cell.DEAD;
-      const cell = [new Cell(1, 1, Cell.ALIVE)];
-      const neighbours = new Neighbour(cell, 0);
+    it('should return Cell.ALIVE when the first status is Cell.ALIVE', () => {
+      const cell = new Cell(0, 0, Cell.ALIVE);
+      const expectedResult = Cell.ALIVE;
 
-      const actualResult = cell[0].status(neighbours.generate());
+      const actualResult = cell.status();
 
-      expect(actualResult).toEqual(expectedResult);
+      expect(actualResult).toBe(expectedResult);
     });
-  });
-  describe('#generateNeighbours', () => {
-    it('should return corresponding 8 neighbours when input is one cell', () => {
-      const expectedResult = [
-        new Cell(0, 0, Cell.DEAD),
-        new Cell(0, 1, Cell.DEAD),
-        new Cell(0, 2, Cell.DEAD),
-        new Cell(1, 0, Cell.DEAD),
-        new Cell(1, 2, Cell.DEAD),
-        new Cell(2, 0, Cell.DEAD),
-        new Cell(2, 1, Cell.DEAD),
-        new Cell(2, 2, Cell.DEAD)
-      ];
-      const cell = new Cell(1, 1, Cell.ALIVE);
 
-      const actualResult = cell.generateNeighbours();
+    it('should return Cell.DEAD when the first status is Cell.DEAD', () => {
+      const cell = new Cell(0, 0, Cell.DEAD);
+      const expectedResult = Cell.DEAD;
 
-      expect(actualResult).toEqual(expectedResult);
+      const actualResult = cell.status();
+
+      expect(actualResult).toBe(expectedResult);
     });
   });
 });
