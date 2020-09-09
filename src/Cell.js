@@ -8,6 +8,7 @@ export default class Cell {
     this._initialState = initialState;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getState() {
     return 'Alive';
   }
