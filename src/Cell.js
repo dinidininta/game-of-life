@@ -1,20 +1,14 @@
-class Cell {
-  constructor(x, y, initialStatus) {
-    this._x = x;
-    this._y = y;
-    this._initialStatus = initialStatus;
-    this._neighbours = 3;
+/**
+ * Represent a single Cell state and neighbours
+ */
+
+export default class Cell {
+  constructor(neighbours, initialState) {
+    this._neighbours = neighbours;
+    this._initialState = initialState;
   }
 
-  status() {
-    if (this._initialStatus === Cell.DEAD) {
-      return Cell.DEAD;
-    }
-    return Cell.ALIVE;
+  getState() {
+    return 'Alive';
   }
 }
-
-Cell.ALIVE = {};
-Cell.DEAD = {};
-
-export default Cell;

@@ -1,23 +1,24 @@
 import Cell from '../src/Cell';
 
 describe('Cell', () => {
-  describe('#status', () => {
-    it('should return Cell.ALIVE when the first status is Cell.ALIVE', () => {
-      const cell = new Cell(0, 0, Cell.ALIVE);
-      const expectedResult = Cell.ALIVE;
+  it('should return Alive state when initial state is Dead and there are 3 ' +
+    'alive neighbour Cells', () => {
+    const expectedResult = 'Alive';
+    const initialState = 'Dead';
+    const neighbours = [
+      new Cell([], 'Alive'),
+      new Cell([], 'Alive'),
+      new Cell([], 'Alive'),
+      new Cell([], 'Dead'),
+      new Cell([], 'Dead'),
+      new Cell([], 'Dead'),
+      new Cell([], 'Dead'),
+      new Cell([], 'Dead')
+    ];
 
-      const actualResult = cell.status();
+    const cell = new Cell(neighbours, initialState);
+    const actualResult = cell.getState();
 
-      expect(actualResult).toBe(expectedResult);
-    });
-
-    it('should return Cell.DEAD when the first status is Cell.DEAD', () => {
-      const cell = new Cell(0, 0, Cell.DEAD);
-      const expectedResult = Cell.DEAD;
-
-      const actualResult = cell.status();
-
-      expect(actualResult).toBe(expectedResult);
-    });
+    expect(actualResult).toEqual(expectedResult);
   });
 });
