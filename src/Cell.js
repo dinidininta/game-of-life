@@ -8,8 +8,16 @@ export default class Cell {
     this._initialState = initialState;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   getState() {
-    return 'Alive';
+    const state = {
+      ALIVE: 'Alive',
+      DEAD: 'Dead'
+    };
+    const aliveNeighbours = this._neighbours.filter(neighbour =>
+      neighbour.getState() === state.ALIVE);
+    if (this._initialState === state.ALIVE && aliveNeighbours.length < 2) {
+      return state.DEAD;
+    }
+    return state.ALIVE;
   }
 }
