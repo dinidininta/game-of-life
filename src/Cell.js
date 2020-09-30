@@ -1,7 +1,7 @@
+import state from './State';
 /**
  * Represent a single Cell state and neighbours
  */
-
 export default class Cell {
   constructor(neighbours, initialState) {
     this._neighbours = neighbours;
@@ -9,10 +9,6 @@ export default class Cell {
   }
 
   getState() {
-    const state = {
-      ALIVE: 'Alive',
-      DEAD: 'Dead'
-    };
     if (this._neighbours.length < 1) {
       return this._initialState;
     }
