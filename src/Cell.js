@@ -13,9 +13,13 @@ export default class Cell {
       ALIVE: 'Alive',
       DEAD: 'Dead'
     };
+    if (this._neighbours.length < 1) {
+      return this._initialState;
+    }
     const aliveNeighbours = this._neighbours.filter(neighbour =>
       neighbour.getState() === state.ALIVE);
-    if (this._initialState === state.ALIVE && aliveNeighbours.length < 2) {
+    if (this._initialState === state.ALIVE && (aliveNeighbours.length < 2
+      || aliveNeighbours.length > 3)) {
       return state.DEAD;
     }
     return state.ALIVE;
