@@ -72,5 +72,49 @@ describe('Game', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+    it('should return cell coordinates that are still alive for Beehive pattern', () => {
+      const board = [
+        ['-', '-', '-', '-', '-', '-'],
+        ['-', '-', 'X', 'X', '-', '-'],
+        ['-', 'X', '-', '-', 'X', '-'],
+        ['-', '-', 'X', 'X', '-', '-'],
+        ['-', '-', '-', '-', '-', '-']
+      ];
+      const expectedResult = [
+        ['-', '-', '-', '-', '-', '-'],
+        ['-', '-', 'X', 'X', '-', '-'],
+        ['-', 'X', '-', '-', 'X', '-'],
+        ['-', '-', 'X', 'X', '-', '-'],
+        ['-', '-', '-', '-', '-', '-']
+      ];
+
+      const game = new Game(board);
+      const actualResult = game.getNextBoard();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
+    it('should return cell coordinates that are still alive for Beacon pattern', () => {
+      const board = [
+        ['-', '-', '-', '-', '-', '-'],
+        ['-', 'X', 'X', '-', '-', '-'],
+        ['-', 'X', 'X', '-', '-', '-'],
+        ['-', '-', '-', 'X', 'X', '-'],
+        ['-', '-', '-', 'X', 'X', '-'],
+        ['-', '-', '-', '-', '-', '-']
+      ];
+      const expectedResult = [
+        ['-', '-', '-', '-', '-', '-'],
+        ['-', 'X', 'X', '-', '-', '-'],
+        ['-', 'X', '-', '-', '-', '-'],
+        ['-', '-', '-', '-', 'X', '-'],
+        ['-', '-', '-', 'X', 'X', '-'],
+        ['-', '-', '-', '-', '-', '-']
+      ];
+
+      const game = new Game(board);
+      const actualResult = game.getNextBoard();
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });
