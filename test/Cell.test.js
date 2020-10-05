@@ -103,5 +103,25 @@ describe('Cell', () => {
 
       expect(actualResult).toEqual(expectedResult);
     });
+    it('should return Dead state when initial state is Dead and there is ' +
+      'exactly 2 alive neighbours', () => {
+      const expectedResult = state.DEAD;
+      const initialState = state.DEAD;
+      const neighbours = [
+        new Cell(state.ALIVE),
+        new Cell(state.DEAD),
+        new Cell(state.DEAD),
+        new Cell(state.DEAD),
+        new Cell(state.DEAD),
+        new Cell(state.DEAD),
+        new Cell(state.DEAD),
+        new Cell(state.ALIVE)
+      ];
+
+      const cell = new Cell(initialState);
+      const actualResult = cell.getNextState(neighbours);
+
+      expect(actualResult).toEqual(expectedResult);
+    });
   });
 });
