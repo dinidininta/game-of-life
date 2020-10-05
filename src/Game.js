@@ -7,7 +7,7 @@ export default class Game {
     this._board = board;
   }
 
-  getNextBoard() {
+  getAliveCells() {
     return this._board;
   }
 }

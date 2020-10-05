@@ -1,6 +1,6 @@
 const state = {
-  ALIVE: 'Alive',
-  DEAD: 'Dead'
+  ALIVE: 'X',
+  DEAD: '-'
 };
 
 export default state;

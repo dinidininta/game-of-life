@@ -45,8 +45,8 @@ describe('Cell', () => {
     });
     it('should return Dead state when initial state is Alive and there is ' +
       'more than 3 alive neighbours', () => {
-      const expectedResult = 'Dead';
-      const initialState = 'Alive';
+      const expectedResult = state.DEAD;
+      const initialState = state.ALIVE;
       const neighbours = [
         new Cell(state.ALIVE),
         new Cell(state.ALIVE),
@@ -65,8 +65,8 @@ describe('Cell', () => {
     });
     it('should return Alive state when initial state is Alive and there is ' +
       'exactly 3 alive neighbours', () => {
-      const expectedResult = 'Alive';
-      const initialState = 'Alive';
+      const expectedResult = state.ALIVE;
+      const initialState = state.ALIVE;
       const neighbours = [
         new Cell(state.ALIVE),
         new Cell(state.ALIVE),
@@ -85,8 +85,8 @@ describe('Cell', () => {
     });
     it('should return Alive state when initial state is Alive and there is ' +
       'exactly 2 alive neighbours', () => {
-      const expectedResult = 'Alive';
-      const initialState = 'Alive';
+      const expectedResult = state.ALIVE;
+      const initialState = state.ALIVE;
       const neighbours = [
         new Cell(state.ALIVE),
         new Cell(state.DEAD),
