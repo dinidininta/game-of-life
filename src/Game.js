@@ -17,30 +17,7 @@ export default class Game {
       const maximumY = row.length - 1;
       row.forEach((cell, y) => {
         const neighbours = [];
-        if (x - 1 >= 0) {
-          if (y - 1 >= 0) {
-            neighbours.push(cells[x - 1][y - 1]);
-          }
-          neighbours.push(cells[x - 1][y]);
-          if (y + 1 <= maximumY) {
-            neighbours.push(cells[x - 1][y + 1]);
-          }
-        }
-        if (y - 1 >= 0) {
-          neighbours.push(cells[x][y - 1]);
-        }
-        if (y + 1 <= maximumY) {
-          neighbours.push(cells[x][y + 1]);
-        }
-        if (x + 1 <= maximumX) {
-          if (y - 1 >= 0) {
-            neighbours.push(cells[x + 1][y - 1]);
-          }
-          neighbours.push(cells[x + 1][y]);
-          if (y + 1 <= maximumY) {
-            neighbours.push(cells[x + 1][y + 1]);
-          }
-        }
+        this._evaluateRow(x, y, maximumX, maximumY, neighbours, cells);
         const nextState = cell.getNextState(neighbours);
         nextRow.push(nextState);
       });
@@ -55,5 +32,26 @@ export default class Game {
       cells.push(row.map(cell => new Cell(cell)));
     });
     return cells;
+  }
+
+  _evaluateCell(y, maximumY, row, neighbours) {
+    if (y - 1 >= 0) {
+      neighbours.push(row[y - 1]);
+    }
+    if (y + 1 <= maximumY) {
+      neighbours.push(row[y + 1]);
+    }
+  }
+
+  _evaluateRow(x, y, maximumX, maximumY, neighbours, cells) {
+    if (x - 1 >= 0) {
+      this._evaluateCell(y, maximumY, cells[x - 1], neighbours);
+      neighbours.push(cells[x - 1][y]);
+    }
+    this._evaluateCell(y, maximumY, cells[x], neighbours);
+    if (x + 1 <= maximumX) {
+      this._evaluateCell(y, maximumY, cells[x + 1], neighbours);
+      neighbours.push(cells[x + 1][y]);
+    }
   }
 }
