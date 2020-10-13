@@ -1,9 +1,9 @@
 import Cell from '../src/Cell';
 
 /**
- * Represent a Game of Life board
+ * Represent a Board for Game of Life
  */
-export default class Game {
+export default class Board {
   constructor(board) {
     this._initialBoard = board;
     this._cells = this._convertBoardToCells();
