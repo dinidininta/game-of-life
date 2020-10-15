@@ -5,13 +5,13 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "start": "babel-node src/index.js",
+    "build:dev": "webpack --config webpack.dev.config.js"
   },
   "license": "ISC",
   "devDependencies": {
-    "@babel/preset-env": "^7.11.5",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
+    "@babel/preset-env": "^7.12.0",
     "eslint": "5.0.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.22.0",
@@ -25,6 +25,13 @@
     }
   },
   "dependencies": {
-    "eslint-config-p5js": "^1.0.1"
+    "@babel/core": "^7.12.0",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.12.0",
+    "@babel/runtime": "^7.12.0",
+    "eslint-config-p5js": "^1.0.1",
+    "jsdom": "^16.4.0",
+    "webpack": "^5.1.1",
+    "webpack-cli": "^4.0.0"
   }
 }
