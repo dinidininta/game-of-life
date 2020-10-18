@@ -7,7 +7,8 @@
   "globals": {
     "describe": true,
     "it": true,
-    "true": true
+    "true": true,
+    "document": true
   },
   "rules": {
     "no-underscore-dangle": 0,
