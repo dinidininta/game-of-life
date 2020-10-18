@@ -1,5 +1,7 @@
 import Game from '../src/Game';
 
+jest.mock('p5');
+
 describe('#Game', () => {
   describe('#getBoardAfterNthTicks', () => {
     it('should return cell coordinates that are still alive for Blinker pattern after 2 ticks', () => {
