@@ -3,16 +3,30 @@ import p5 from 'p5';
 import Board from './Board';
 import State from './State';
 
-const resolution = 40;
-let board = [
-  ['-', '-', '-', '-', '-', '-', '-'],
-  ['-', '-', '-', '-', '-', '-', '-'],
-  ['-', '-', '-', '-', '-', '-', '-'],
-  ['-', '-', 'X', 'X', 'X', '-', '-'],
-  ['-', '-', '-', '-', '-', '-', '-'],
-  ['-', '-', '-', '-', '-', '-', '-'],
-  ['-', '-', '-', '-', '-', '-', '-']
-];
+const resolution = 20;
+// let board = [
+//   ['-', '-', '-', '-', '-', '-', '-'],
+//   ['-', '-', '-', '-', '-', '-', '-'],
+//   ['-', '-', '-', '-', '-', '-', '-'],
+//   ['-', '-', 'X', 'X', 'X', '-', '-'],
+//   ['-', '-', '-', '-', '-', '-', '-'],
+//   ['-', '-', '-', '-', '-', '-', '-'],
+//   ['-', '-', '-', '-', '-', '-', '-']
+// ];
+
+const state = () => {
+  const value = Math.round(Math.random(2));
+  if (value > 0) {
+    return State.ALIVE;
+  }
+  return State.DEAD;
+};
+
+const createBoard = (rows, columns) => Array.from({ length: rows }, () =>
+  (Array.from({ length: columns }, () => state())));
+
+// let board = createBoard(7, 7);
+let board = createBoard(window.innerWidth / resolution, window.innerHeight / resolution);
 
 const drawBoard = (processing) => {
   board.forEach((row, i) => {
@@ -30,8 +44,9 @@ const drawBoard = (processing) => {
 const render = () => {
   const sketch = (processing) => {
     processing.setup = () => {
-      processing.createCanvas(280, 280);
-      processing.frameRate(2);
+      // processing.createCanvas(280, 280);
+      processing.createCanvas(window.innerWidth, window.innerHeight);
+      processing.frameRate(10);
     };
 
     processing.draw = () => {
