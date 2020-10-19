@@ -117,23 +117,4 @@ describe('Board', () => {
       expect(actualResult).toEqual(expectedResult);
     });
   });
-  describe('#getBoard', () => {
-    it('should return initial board', () => {
-      const initialBoard = [
-        ['-', '-', '-'],
-        ['-', 'X', 'X'],
-        ['-', 'X', 'X']
-      ];
-      const expectedResult = [
-        ['-', '-', '-'],
-        ['-', 'X', 'X'],
-        ['-', 'X', 'X']
-      ];
-
-      const board = new Board(initialBoard);
-      const actualResult = board.getBoard();
-
-      expect(actualResult).toEqual(expectedResult);
-    });
-  });
 });

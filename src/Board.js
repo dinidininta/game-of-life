@@ -55,8 +55,4 @@ export default class Board {
       neighbours.push(this._cells[x + 1][y]);
     }
   }
-
-  getBoard() {
-    return this._initialBoard;
-  }
 }
