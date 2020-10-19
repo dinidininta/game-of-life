@@ -31,6 +31,7 @@ const render = () => {
   const sketch = (processing) => {
     processing.setup = () => {
       processing.createCanvas(280, 280);
+      processing.frameRate(2);
     };
 
     processing.draw = () => {
