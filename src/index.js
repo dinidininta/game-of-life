@@ -20,7 +20,7 @@ const resolution = 20;
 
 const rows = window.innerWidth / resolution;
 const columns = window.innerHeight / resolution;
-let board = Util.initiateBoard(rows, columns, Patterns.GLIDER_RUN);
+let board = Util.initiateBoard(rows, columns, Patterns.PENTADECATHLON);
 // let board = Util.initiateBoard(rows, columns); // Random
 
 const drawBoard = (processing) => {
