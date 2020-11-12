@@ -33,7 +33,7 @@ const estimatePoint = (n, resolution) => {
   for (let i = 0; i <= n; i += resolution) {
     estimation = i;
   }
-  return estimation;
+  return estimation / resolution;
 };
 
 export default {

@@ -54,8 +54,8 @@ const render = () => {
 
     processing.draw = () => {
       if (processing.mouseIsPressed) {
-        const x = Util.estimatePoint(processing.mouseX) / resolution;
-        const y = Util.estimatePoint(processing.mouseY) / resolution;
+        const x = Util.estimatePoint(processing.mouseX, resolution);
+        const y = Util.estimatePoint(processing.mouseY, resolution);
         pattern.push([x, y]);
         board = Util.initiateBoard(rows, columns, pattern);
         drawPattern(processing);
