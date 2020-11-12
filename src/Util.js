@@ -27,6 +27,16 @@ const initiateBoard = (rows, columns, aliveCells = []) => {
   return init;
 };
 
+
+const estimatePoint = (n, resolution) => {
+  let estimation = 0;
+  for (let i = 0; i <= n; i += resolution) {
+    estimation = i;
+  }
+  return estimation;
+};
+
 export default {
-  initiateBoard
+  initiateBoard,
+  estimatePoint
 };
