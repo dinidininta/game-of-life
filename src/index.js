@@ -23,17 +23,30 @@ const columns = window.innerHeight / resolution;
 let board = Util.initiateBoard(rows, columns, Patterns.PENTADECATHLON);
 // let board = Util.initiateBoard(rows, columns); // Random
 
-const drawBoard = (processing) => {
+const drawPattern = (processing) => {
   board.forEach((row, i) => {
     row.forEach((cell, j) => {
       const x = i * resolution;
       const y = j * resolution;
       if (cell === State.ALIVE) {
-        processing.fill(255);
+        processing.fill(0);
         processing.rect(x, y, resolution - 1, resolution - 1);
       }
     });
   });
+};
+
+const drawBoard = (processing) => {
+  for (let i = 0; i < rows; i += 1) {
+    for (let j = 0; j < columns; j += 1) {
+      const x = i * resolution;
+      const y = j * resolution;
+      processing.fill(255);
+      processing.stroke(0);
+      processing.strokeWeight(1);
+      processing.rect(x, y, resolution - 1, resolution - 1);
+    }
+  }
 };
 
 const render = () => {
@@ -47,7 +60,10 @@ const render = () => {
     processing.draw = () => {
       processing.background(0);
       drawBoard(processing);
-      board = new Board(board).getNextBoard();
+      if (processing.keyCode === processing.ENTER) {
+        drawPattern(processing);
+        board = new Board(board).getNextBoard();
+      }
     };
   };
 
