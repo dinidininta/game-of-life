@@ -11,10 +11,9 @@ const rows = window.innerWidth / resolution;
 const columns = window.innerHeight / resolution;
 // let board = createBoard(7, 7);
 // let board = Util.initiateBoard(rows, columns, Patterns.GLIDER_RUN);
-// Random Pattern
-// let board = Util.initiateBoard(rows, columns);
-const pattern = [];
-let board;
+// let board = Util.initiateBoard(rows, columns); // Random Pattern
+let pattern = [];
+let board = null;
 
 const drawEmptyBoard = (processing) => {
   for (let i = 0; i < rows; i += 1) {
@@ -60,10 +59,16 @@ const render = () => {
         board = Util.initiateBoard(rows, columns, pattern);
         drawPattern(processing);
       }
-      if (processing.keyCode === processing.ENTER) {
+      if (board && processing.keyCode === processing.ENTER) {
         drawEmptyBoard(processing);
         board = new Board(board).getNextBoard();
         drawPattern(processing);
+      }
+      if (processing.keyCode === 8) { // Delete
+        drawEmptyBoard(processing);
+        processing.keyCode = null;
+        board = null;
+        pattern = [];
       }
     };
   };
