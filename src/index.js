@@ -21,7 +21,7 @@ const drawEmptyBoard = (processing) => {
       const x = i * resolution;
       const y = j * resolution;
       processing.fill(255);
-      processing.stroke(0);
+      processing.stroke('gray');
       processing.strokeWeight(1);
       processing.rect(x, y, resolution - 1, resolution - 1);
     }
