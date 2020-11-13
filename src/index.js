@@ -65,6 +65,7 @@ const render = () => {
         board = new Board(board).getNextBoard();
         drawPattern(processing);
       }
+
       if (processing.keyIsPressed) {
         // Delete last alive cell
         if (processing.keyCode === 8) { // Delete
