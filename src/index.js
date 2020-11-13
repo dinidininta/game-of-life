@@ -55,7 +55,7 @@ const render = () => {
       if (processing.mouseIsPressed && processing.mouseButton === processing.LEFT) {
         const x = Util.estimatePoint(processing.mouseX, resolution);
         const y = Util.estimatePoint(processing.mouseY, resolution);
-        pattern.push([x, y]);
+        Util.pushAliveCell(pattern, [x, y]);
         board = Util.initiateBoard(rows, columns, pattern);
         drawPattern(processing);
       }

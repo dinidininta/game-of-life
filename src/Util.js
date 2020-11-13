@@ -36,7 +36,15 @@ const estimatePoint = (n, resolution) => {
   return estimation / resolution;
 };
 
+const pushAliveCell = (pattern, aliveCell) => {
+  const duplicate = pattern.find(cell => cell[0] === aliveCell[0] && cell[1] === aliveCell[1]);
+  if (!duplicate) {
+    pattern.push(aliveCell);
+  }
+};
+
 export default {
   initiateBoard,
-  estimatePoint
+  estimatePoint,
+  pushAliveCell
 };
