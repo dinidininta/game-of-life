@@ -52,14 +52,15 @@ const render = () => {
     };
 
     processing.draw = () => {
-      if (processing.mouseIsPressed) {
+      if (processing.mouseIsPressed && processing.mouseButton === processing.LEFT) {
         const x = Util.estimatePoint(processing.mouseX, resolution);
         const y = Util.estimatePoint(processing.mouseY, resolution);
         pattern.push([x, y]);
         board = Util.initiateBoard(rows, columns, pattern);
         drawPattern(processing);
       }
-      if (board && processing.keyCode === processing.ENTER) {
+
+      if (processing.keyCode === processing.ENTER && board) {
         drawEmptyBoard(processing);
         board = new Board(board).getNextBoard();
         drawPattern(processing);
