@@ -65,11 +65,25 @@ const render = () => {
         board = new Board(board).getNextBoard();
         drawPattern(processing);
       }
-      if (processing.keyCode === 8) { // Delete
-        drawEmptyBoard(processing);
-        processing.keyCode = null;
-        board = null;
-        pattern = [];
+      if (processing.keyIsPressed) {
+        // Delete last alive cell
+        if (processing.keyCode === 8) { // Delete
+          if (pattern.length > 0) {
+            pattern.pop();
+            drawEmptyBoard(processing);
+            board = Util.initiateBoard(rows, columns, pattern);
+            drawPattern(processing);
+          }
+          if (pattern.length < 1) {
+            drawEmptyBoard(processing);
+          }
+        }
+        // Reset game
+        if (processing.keyCode === 16) { // Shift
+          drawEmptyBoard(processing);
+          board = null;
+          pattern = [];
+        }
       }
     };
   };
